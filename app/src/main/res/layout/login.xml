@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/log"
+    android:orientation="vertical"
+    tools:context=".activitys.LoginActivity">
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="410dp"
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            />
+
+
+        <EditText
+            android:id="@+id/et_lodin"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="@string/login"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textSize="25sp"
+            android:textColor="#ffff"
+            android:textColorHint="#fff"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            />
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#ffff"
+            android:textColorHint="#fff"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:padding="10dp"
+            android:textSize="25sp"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            />
+
+        <Button
+            android:id="@+id/b_autoriz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/LogIn"
+            android:textColor="#ffff"
+            android:background="@android:color/transparent"
+            android:textSize="25sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            />
+
+        <Button
+            android:id="@+id/check_stat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Посмотреть \n статистику"
+            android:textSize="20dp"
+            android:textColor="#FFF"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent">
+
+        </Button>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/link_to_register"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="40dip"
+            android:layout_marginBottom="40dip"
+            android:gravity="center"
+            android:text="Оууу.Да вы новенький.Прошу за мной.."
+            android:textColor="#FFF0F5"
+            android:textSize="20dip"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,2 @@
+rootProject.name='Kyrsovaya_client_v2'
+include ':app'

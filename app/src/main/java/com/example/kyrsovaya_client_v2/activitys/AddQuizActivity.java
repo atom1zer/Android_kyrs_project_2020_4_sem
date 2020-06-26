@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -35,6 +36,7 @@ public class AddQuizActivity extends AppCompatActivity {
     TextView mew_name_quiz,new_question, incorect_answers;
     ArrayList<String> list = new ArrayList<>();
     String m;
+    Integer size;
     public final static String CORRECT = "CORRECT_ANSWER";
 
 
@@ -70,11 +72,21 @@ public class AddQuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(getContext(), "Добавление в базу произошло успешно!", Toast.LENGTH_SHORT).show();
-               CreateQuiz();
 
-                quiz_name.setText("");
-                question.setText("");
-                correct_answer.setText("");
+                if(list.contains(correct_answer.getText().toString().trim()))
+                {
+                    CreateQuiz();
+
+                    quiz_name.setText("");
+                    question.setText("");
+                    correct_answer.setText("");
+
+
+                }
+                else{
+                    Toast.makeText(AddQuizActivity.this, "Введенный правильный ответ отличается от вариантов выше!", Toast.LENGTH_SHORT).show();
+                }
+
 
 
             }

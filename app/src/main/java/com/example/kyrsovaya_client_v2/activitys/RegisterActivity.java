@@ -128,7 +128,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
                 try {
                     if(!response.isSuccessful()){
-                        Toast.makeText(  RegisterActivity.this, "Пора кормить кота!!!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(  RegisterActivity.this, "Регистрация  не произошла!!!", Toast.LENGTH_LONG).show();
                     }
                     String s = response.body().string();
                     Intent i=new Intent(getApplicationContext(),LoginActivity.class);

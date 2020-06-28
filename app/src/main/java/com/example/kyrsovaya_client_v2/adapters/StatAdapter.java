@@ -29,23 +29,17 @@ public class StatAdapter extends RecyclerView.Adapter<StatAdapter.ViewHolder> {
         this.inflater = LayoutInflater.from(mCtx);
     }
 
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.for_stat, parent, false);
         return new ViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
         final Stat statt = stat.get(position);
         holder.login.setText(statt.getLogin());
-        Log.d("33333333", "2222222 " + statt.getLogin());
         holder.count.setText(statt.getStatistics());
-        Log.d("33333333", "2222222 " + statt.getStatistics());
-
     }
 
     @Override
@@ -54,12 +48,9 @@ public class StatAdapter extends RecyclerView.Adapter<StatAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         final TextView login, count;
-
         public ViewHolder(View view) {
             super(view);
-
             login = (TextView) view.findViewById(R.id.stat_login);
             count = (TextView) view.findViewById(R.id.stat_count);
         }

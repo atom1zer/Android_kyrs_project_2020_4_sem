@@ -119,20 +119,18 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             @Override
             public void onResponse(Call<Data> call, Response<Data> response) {
                 Data data = response.body();
-                if(!data.isStatus()){
+                if(!response.isSuccessful()){
                     Toast toast = Toast.makeText(getApplicationContext(),
                             "Не верный логин или пароль!", Toast.LENGTH_SHORT);
                     toast.show();}
                 else {
-                    Toast toast = Toast.makeText(getApplicationContext(),
-                            "Пора кормить кота!", Toast.LENGTH_SHORT);
-                    toast.show();
+
                     SharedPrefManager.getInstance(LoginActivity.this)
                             .saveUser(data.getResponse().getData());
 
                     SharedPrefManager.getInstance(LoginActivity.this)
                             .saveToken(data.getResponse().getToken());
-                    Toast.makeText(getApplicationContext(),"Здравствуй,  " + String.valueOf(data.getResponse().getData().getLogin()),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Здравствуй,  " + String.valueOf(data.getResponse().getData().getLogin()),Toast.LENGTH_LONG).show();
 
                     Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

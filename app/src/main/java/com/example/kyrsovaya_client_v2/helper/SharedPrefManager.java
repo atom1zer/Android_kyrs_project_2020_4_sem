@@ -19,8 +19,6 @@ public class SharedPrefManager {
         this.mCtx = mCtx;
     }
 
-
-
     public static synchronized SharedPrefManager getInstance(Context mCtx){
         if (mInstance == null){
             mInstance = new SharedPrefManager(mCtx);
@@ -36,11 +34,9 @@ public class SharedPrefManager {
     public void saveUser(User user){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-
         editor.putInt("id", user.getId());
         editor.putString("login", user.getLogin());
         editor.putString("email", user.getNickname());
-
         editor.apply();
     }
 
@@ -53,8 +49,6 @@ public class SharedPrefManager {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return String.valueOf(sharedPreferences.getString("login", null) != null);
     }
-
-
 
     public User getUser(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
@@ -72,18 +66,13 @@ public class SharedPrefManager {
                 sharedPreferences.getString("author_id", null),
                 sharedPreferences.getString("quizname", null),
                 sharedPreferences.getString("author_name", null)
-                //sharedPreferences.getString("questions", null),
-                //sharedPreferences.getString("incorrect_answers", null),
-                //sharedPreferences.getString("correct_answers", null)
         );
     }
 
     public void saveToken(String token){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-
         editor.putString("token", token);
-
         editor.apply();
     }
 

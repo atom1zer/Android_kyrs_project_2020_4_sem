@@ -126,17 +126,16 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
-                try {
-                    if(!response.isSuccessful()){
-                        Toast.makeText(  RegisterActivity.this, "Регистрация  не произошла!!!", Toast.LENGTH_LONG).show();
-                    }
-                    String s = response.body().string();
-                    Intent i=new Intent(getApplicationContext(),LoginActivity.class);
-                    startActivity(i);
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                    if(!response.isSuccessful()){
+                        Toast.makeText(  RegisterActivity.this, "Регистрация  не произошла!", Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        Toast.makeText(  RegisterActivity.this, "Вы успешно зарегистрированы!", Toast.LENGTH_LONG).show();
+                        Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(i);
+                    }
+
 
             }
 

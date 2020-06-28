@@ -38,7 +38,6 @@ public class StatActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycle_stat);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         List<Stat> answers = new ArrayList<>();
-
         SharedPrefManager s = SharedPrefManager.getInstance(this);
 
         Call<Stat> call = RetrofitClient.getInstance().getApi().getStat();
@@ -46,21 +45,14 @@ public class StatActivity extends AppCompatActivity {
         call.enqueue(new Callback<Stat>() {
             @Override
             public void onResponse(Call<Stat> call, Response<Stat> response) {
-
-
-
                 stat = response.body().getStat();
-
-
                 adapter = new StatAdapter(StatActivity.this, stat);
                 recyclerView.setAdapter(adapter);
-
             }
 
             @Override
             public void onFailure(Call<Stat> call, Throwable t) {
                 Toast.makeText(StatActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-
             }
         });
 

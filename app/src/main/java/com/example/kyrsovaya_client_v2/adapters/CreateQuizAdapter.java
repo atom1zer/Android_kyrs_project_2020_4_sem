@@ -73,6 +73,14 @@ public class CreateQuizAdapter extends RecyclerView.Adapter<CreateQuizAdapter.Cr
     public void onBindViewHolder(@NonNull CreateQuizViewHolder holder, int position) {
         String currentQuiz = list.get(position);
         holder.quiz_frag.setText(currentQuiz);
+        holder.quiz_frag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();
+                holder.quiz_frag.getText();
+                Toast.makeText(context, holder.quiz_frag.getText(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
         holder.delit.setOnClickListener(new View.OnClickListener() {
             @Override

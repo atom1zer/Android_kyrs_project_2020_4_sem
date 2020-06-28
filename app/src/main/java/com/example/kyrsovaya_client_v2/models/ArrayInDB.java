@@ -47,7 +47,5 @@ public class ArrayInDB {
         return str;
     }
 
-   /* public Array getCorrect_answers() {
-        return correct_answers;
-    }*/
+
 }

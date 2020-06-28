@@ -58,7 +58,9 @@ public class PersonalQuizActivity extends AppCompatActivity {
         Log.d("СМОТРИИИИИ","СМОТРИИИИИ" + id);
         recyclerView = findViewById(R.id.recycle_answers);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        List<ArrayInDB> answers = new ArrayList<>();
+        //List<ArrayInDB> answers = new ArrayList<>();
+
+
 
         author_nameView = (TextView) findViewById(R.id.DETAILS_name);
         quiz_nameView = (TextView) findViewById(R.id.name_of_quiz);
@@ -79,8 +81,11 @@ public class PersonalQuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Send();
-                v.setVisibility(View.GONE);
+
+                    Send();
+                    v.setVisibility(View.GONE);
+
+
             }
         });
 
@@ -107,6 +112,7 @@ public class PersonalQuizActivity extends AppCompatActivity {
                 adapter = new PersonalQuizAdapter(PersonalQuizActivity.this, ans);
                 recyclerView.setAdapter(adapter);
 
+
             }
 
             @Override
@@ -123,6 +129,7 @@ public class PersonalQuizActivity extends AppCompatActivity {
 
         String otvet = correct.getText().toString().trim();
         Integer avtor = SharedPrefManager.getInstance().getUser().getId(); //имя автора опроса
+
 
 
         Call<AnswersResponse> call = RetrofitClient

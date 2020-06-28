@@ -47,8 +47,6 @@ public interface Api {
             @Field("questions") String questions,
             @Field("incorrect_answers") ArrayList<String> incorrect_answers,
             @Field("correct_answers") String correct_answers
-
-            //@Field("correct_answers") Array correct_answers
     );
 
     @FormUrlEncoded
@@ -58,9 +56,6 @@ public interface Api {
             @Field("quizID") String quiz_id,
             @Field("correct") String correct
     );
-
-
-
 
     @GET("quiz")
     Call<QuizResponse> getQuizzes(
@@ -82,26 +77,10 @@ public interface Api {
 
     );
 
-   /* @GET("answers/{id}")
-    Call<ArrayInDB> getAnswers(
-            @Path("id") String id,
-            @Query("token") String token
-    );*/
-
    @GET("quiz/{SIZE}")
    Call<AnswersResponse> getAnswer(
             @Path("SIZE") Integer SIZE,
             @Query("token") String token
     );
-
-
-
-   /* @GET("users")
-    Call<SharedPrefManager>getToken(@Query("token") String token);
-
-    @GET("users")
-    Call<UsersResponse> getData(@Query("token") String token);*/
-
-
 
 }

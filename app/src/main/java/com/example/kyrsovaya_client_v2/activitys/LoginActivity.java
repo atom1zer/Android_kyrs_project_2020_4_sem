@@ -132,7 +132,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
                     SharedPrefManager.getInstance(LoginActivity.this)
                             .saveToken(data.getResponse().getToken());
-                    Toast.makeText(getApplicationContext(),String.valueOf(data.getResponse().getData().getLogin()),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Здравствуй,  " + String.valueOf(data.getResponse().getData().getLogin()),Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

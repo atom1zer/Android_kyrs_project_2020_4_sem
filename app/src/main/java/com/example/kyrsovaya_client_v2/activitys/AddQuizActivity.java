@@ -39,27 +39,17 @@ public class AddQuizActivity extends AppCompatActivity {
     Integer size;
     public final static String CORRECT = "CORRECT_ANSWER";
 
-
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lichnuy_kabinet);
         setTitle("Создание опроса");
-
         recyclerView = findViewById(R.id.recyclerView_1);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         SharedPrefManager s=SharedPrefManager.getInstance(AddQuizActivity.this);
         //Toast.makeText(getContext(), s.getToken(),Toast.LENGTH_SHORT).show();
         //correct_answer = view.findViewById(R.id.correct_answers);
         add = findViewById(R.id.add);
-
-
-
         recyclerView.setLayoutManager(new LinearLayoutManager(AddQuizActivity.this));
-
-
-
-
         create_quiz =  (Button)  findViewById( R.id.create_quiz);
         quiz_name =  (EditText)   findViewById( R.id.nameofquiz);
         question =  (EditText)   findViewById( R.id.question);
@@ -71,37 +61,23 @@ public class AddQuizActivity extends AppCompatActivity {
         create_quiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(getContext(), "Добавление в базу произошло успешно!", Toast.LENGTH_SHORT).show();
-
                 if(list.contains(correct_answer.getText().toString().trim()))
                 {
                     CreateQuiz();
-
+                    otvet.setText("");
                     quiz_name.setText("");
                     question.setText("");
                     correct_answer.setText("");
-
-
                 }
                 else{
                     Toast.makeText(AddQuizActivity.this, "Введенный правильный ответ отличается от вариантов выше!", Toast.LENGTH_SHORT).show();
                 }
-
-
-
             }
         });
 
-
-        // String[] array = {"Привет","Пока","Стой"};
-        //ArrayList<String> list = new ArrayList<>();
         CreateQuizAdapter createQuizAdapter = new CreateQuizAdapter(list);
         recyclerView.setAdapter(createQuizAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(AddQuizActivity.this));
-
-
-
-
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,9 +92,6 @@ public class AddQuizActivity extends AppCompatActivity {
                         otvet.setText("");
                     }
 
-
-
-                    //Log.d("23412412412412", "231231231231" + list);
                 }
                 else {
                     Toast.makeText(AddQuizActivity.this, "Введите вариант ответа.", Toast.LENGTH_SHORT).show();
@@ -129,8 +102,6 @@ public class AddQuizActivity extends AppCompatActivity {
     }
 
      public void CreateQuiz(){
-
-
 
         Intent intent=getIntent();
         m=intent.getExtras().getString("CORRECT_ANSWER"/*, "defaultKey"*/);
@@ -143,36 +114,25 @@ public class AddQuizActivity extends AppCompatActivity {
          Integer id = SharedPrefManager.getInstance().getUser().getId();
          Log.d("546456459456645654", "1455616156151566" + id);
 
-
-
         ArrayList<String> i = list;
-        //ArrayList<String> m = cor;
-
 
         Call<AnswersResponse> call = RetrofitClient
                 .getInstance()
                 .getApi()
                 .createQuiz(name_quiz, id ,avtor ,quest, i , correct);
-        // Log.d("ПРОВЕРЯЮЮЮЮЮЮ", "ПРОВЕРЯЮЮЮЮЮЮ" + name_quiz + avtor + quest + i);
 
         call.enqueue(new Callback<AnswersResponse>() {
             @Override
             public void onResponse(Call<AnswersResponse> call, Response<AnswersResponse> response) {
 
                 Toast.makeText(AddQuizActivity.this, "Опрос успешно создан!", Toast.LENGTH_SHORT).show();
-
-
             }
-
 
             @Override
             public void onFailure(Call<AnswersResponse> call, Throwable t) {
                  Toast.makeText(AddQuizActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
-
         });
-
-
     }
 
 }

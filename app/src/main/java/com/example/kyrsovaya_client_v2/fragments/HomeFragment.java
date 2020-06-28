@@ -37,57 +37,20 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private List<Quiz> quizList;
     private QuizAdapter adapter;
-   // private ListView listView;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.home_fragment, container, false);
 
     }
 
-    //ListView list = (ListView) listView.findViewById(R.id.list);
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //ChatListActivity.Spisok();
-
-        /*Call<List<Quiz>> call = RetrofitClient.getInstance().getApi().getQuizzes();
-
-        call.enqueue(new Callback<List<Quiz>>() {
-            @Override
-            public void onResponse(Call<List<Quiz>> call, Response<List<Quiz>> response) {
-                List<Quiz> quiz = response.body();
-                String[] quiznames = new String[quiz.size()];
-
-                for(int i = 0; i<quiz.size(); i++)
-                {
-                    quiznames[i] = quiz.get(i).getQuizname();
-                }
-                list.setAdapter(
-                        new ArrayAdapter<String>(
-                                getApplicationContext(),
-                                android.R.layout.simple_list_item_1,
-                                quiznames
-                        )
-                );
-                // Log.d("123", "Пока");
-
-                for(Quiz q:quiz)
-                {
-                    Log.d("quizname", q.getQuizname());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Quiz>> call, Throwable t) {
-                Log.d("Беда", "БЕДА!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            }
-        });*/
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         SharedPrefManager s=SharedPrefManager.getInstance(getContext());
-       //Toast.makeText(getContext(), s.getToken(),Toast.LENGTH_SHORT).show();
         Call<QuizResponse> call = RetrofitClient.getInstance().getApi().getQuizzes(s.getToken());
 
         call.enqueue(new Callback<QuizResponse>() {

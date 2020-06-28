@@ -33,9 +33,6 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder> {
     private List<Quiz> quiz;
     private Context mCtx;
 
-
-
-
     public QuizAdapter(Context mCtx, List<Quiz> quiz) {
         this.quiz = quiz;
         this.mCtx = mCtx;
@@ -48,10 +45,6 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder> {
 
     }
 
-
-
-
-
     @Override
     public void onBindViewHolder(QuizAdapter.ViewHolder holder, int position) {
 
@@ -62,91 +55,20 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder> {
         holder.id.setText(quizz.getQuiz_id());
 
 
-        //String i = quizz.getQuiz_id();
-       // holder.author_nameView.setText(quizz.getQuiz_id());
-        //holder.questionsView.setText(quizz.getQuestions());
-
-        /*holder.cardView.setOnClickListener((v) ->{
-
-            Context context = v.getContext();
-            Intent intent = new Intent(context, QuizOnClickActivity.class);
-            intent.putExtra(QuizOnClickActivity.NAME_OF_QUIZ, quizz.getQuizname());
-            intent.putExtra(QuizOnClickActivity.NAME, quizz.getAuthor_name());
-            //intent.putExtra(QuizOnClickActivity.QUESTIONS, quizz.getQuestions().toString());
-            //intent.putExtra(QuizOnClickActivity.INCORRECT_ANSWERS, quizz.getIncorrect_answers().toString());
-            context.startActivity(intent);
-
-
-        } );*/
-
         final Context context = holder.cardView.getContext();
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Navigation.findNavController(view).navigate(R.id.personalQuizFragment);
-
-                /*if(context instanceof PersonalQuizActivity){
-                    ((PersonalQuizActivity)context).startActivity();
-                }*/
-                /*Intent intent = new Intent(context, PersonalQuizActivity.class);
-                        context.startActivity(intent);*/
 
                 Context context = view.getContext();
                 Intent inten = new Intent(context, PersonalQuizActivity.class);
                 inten.putExtra("ID", quizz.getQuiz_id().toString());
                 context.startActivity(inten);
 
-                 //Integer SIZE = position + 1;
-                //Toast.makeText(context,"" +  SIZE  , Toast.LENGTH_SHORT).show();
-                //Method(position + 1);
-
-
-
-
             }
 
         });
-
-
-
-
     }
-
-   /* public static class Customer {
-
-        public static void main() {
-            Customer customer=new Customer();
-            Integer I = customer.getMethod();
-
-        }
-
-        public Integer SIZE = -1;
-        public void Method(Integer SIZE){
-
-            this.SIZE = SIZE;
-        }
-
-        public Integer getMethod(){
-
-            return this.SIZE;
-
-        }
-
-    }*/
-
-
-    /*public Integer SIZE = -1;
-    public void Method(Integer SIZE){
-
-        this.SIZE = SIZE;
-    }
-
-    public Integer getMethod(){
-
-        return this.SIZE;
-
-    }*/
-
 
     @Override
     public int getItemCount() {
@@ -155,7 +77,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        final TextView author_nameView, quiz_nameView, id;/*,questionsView*/
+        final TextView author_nameView, quiz_nameView, id;
         final CardView cardView;
 
         ViewHolder(View view){
@@ -164,9 +86,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.ViewHolder> {
             quiz_nameView = (TextView) view.findViewById(R.id.quiz_name);
             id = (TextView) view.findViewById(R.id.author_id);
             cardView = (CardView) view.findViewById(R.id.card);
-            //questionsView = (TextView) view.findViewById(R.id.questions);
         }
-
 
     }
 
